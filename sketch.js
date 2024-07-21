@@ -7,6 +7,8 @@ let countHeart = 0;
 let xText_1 = 20;
 let yText_1 = 20;
 let total = 205;
+const { PI: π } = Math;
+let x, y, r, t;
 
 function preload() {
     img = loadImage('frame.jpg');
@@ -14,7 +16,7 @@ function preload() {
 function setup() {
     createCanvas(windowWidth, windowHeight);
     colors = ["#edbba8", "#e66f3c", "#c6b6d5", "#f1d147", "#a4cd98", "#95accb"];
-    angleModeSaved = angleMode();
+    r = min(width, height) / 32;
 }
 
 function draw() {
@@ -43,6 +45,7 @@ function draw() {
     if(step == 0){
         drawTextBox(xText_1, yText_1, textWidth, textHeight, text_1, "#fba2d0", "#6c7ee1");   
     }
+    drawHeart();
 }
 
 function mouseDragged() {
@@ -92,4 +95,18 @@ function drawImageWithBorder(img, borderSize) {
     rect(imgX - borderSize / 2, imgY - borderSize / 2, img.width + borderSize, img.height + borderSize);
 
     image(img, imgX, imgY);
+}
+
+function drawHeart() {
+    background(50, 5);
+    translate(width / 2, height / 2);
+    rotate(π);
+    stroke(255, 50, 50);
+    strokeWeight(2);
+    fill(255, 0, 0); // Ví dụ, màu đỏ cho phần bên trong
+    
+    t = frameCount / 180;
+    x = r * 16 * pow(sin(t), 3);
+    y = r * (13 * cos(t) - 5 * cos(2 * t) - 2 * cos(3 * t) - cos(4 * t));
+    line(0, 0, x, y);
 }
