@@ -13,7 +13,7 @@ let done = 0;
 let alpha = 0;
 
 function preload() {
-    img = loadImage('frame.jpg');
+    img = loadImage('official.jpg');
 }
 function setup() {
     createCanvas(windowWidth, windowHeight);
