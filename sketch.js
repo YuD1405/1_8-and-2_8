@@ -5,7 +5,7 @@ let squareAlpha = 255;
 let countHeart = 0;
 let xText_1 = 20;
 let yText_1 = 20;
-let total = 205;
+let total = 457;
 const { PI: π } = Math;
 let x, y, r, t;
 let scence = 0;
@@ -44,7 +44,7 @@ function draw() {
     
         let textWidth = 200;
         let textHeight = 120;
-        let text_1 = "STEP 1 \nGiả bộ click rùi rê chuột xí xí iiii 😏\n0" + countHeart + "/0" + total; 
+        let text_1 = countHeart + "/" + total; 
         drawTextBox(xText_1, yText_1, textWidth, textHeight, text_1, "#fba2d0", "#6c7ee1");    
         if(done == 1) {
             drawWhiteBg(alpha);
@@ -61,12 +61,12 @@ function draw() {
 }
 
 function mouseDragged() {
-    if(countHeart < 205){
+    if(countHeart < total){
         countHeart ++;
         hearts.push(new Heart(mouseX, mouseY));
     }
     if (squareAlpha > 0) {
-        squareAlpha -= 255/205;
+        squareAlpha -= 255/total;
     } else{
         done = 1;
     }   
@@ -87,7 +87,7 @@ function drawTextBox(x, y, width, height, textContent, textColor, boxColor) {
     stroke(0);
     strokeWeight(0.5);
     fill(textColor);
-    textSize(18);
+    textSize(30);
     textAlign(LEFT, TOP);
     text(textContent, x + 10, y + 10, width - 20, height - 20);
 }
